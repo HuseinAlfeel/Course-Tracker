@@ -1,70 +1,146 @@
-# Getting Started with Create React App
+Devolve
+Images to be added later ***
+A comprehensive learning progress tracker for web development bootcamps and courses. Track your journey from beginner to professional with visual progress indicators, streak tracking, and gamified achievements.
+Live Demo
+Demo to be added later***
+✨ Features
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Progress Tracking: Monitor your overall and category-specific progress
+Achievement System: Unlock badges as you reach learning milestones
+Study Streak Tracking: Build consistent learning habits
+Visual Analytics: See your learning patterns with interactive charts
+Module Management: Track individual modules with not started/in progress/completed status
+Leaderboard: Compare your progress with other learners
+User Authentication: Secure login/signup system
+Responsive Design: Works on desktop and mobile devices
 
-## Available Scripts
+🚀 Quick Start
+Prerequisites
 
-In the project directory, you can run:
+Node.js (v14.x or higher recommended)
+npm or yarn
+Git
 
-### `npm start`
+Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Clone the repository
+bashgit clone https://github.com/HuseinAlfeel/Course-Tracker.git
+cd Course-Tracker
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Install dependencies
+bashnpm install
 
-### `npm test`
+Create a Firebase project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Go to Firebase Console
+Create a new project
+Set up Authentication (Email/Password)
+Create a Firestore database
+Get your Firebase configuration
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Create a .env file in the root directory with your Firebase config
+REACT_APP_FIREBASE_API_KEY=your-api-key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your-auth-domain
+REACT_APP_FIREBASE_PROJECT_ID=your-project-id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your-storage-bucket
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
+REACT_APP_FIREBASE_APP_ID=your-app-id
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Start the development server
+bashnpm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Open http://localhost:3000 to view the app
 
-### `npm run eject`
+For Legacy Node Versions
+This project uses some dependencies that may require the OpenSSL legacy provider. If you encounter related errors, use:
+bashnpm start -- --openssl-legacy-provider
+Or set in package.json scripts:
+json"start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start"
+🔧 Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Frontend: React.js, React Router v6
+Styling: CSS-in-JS (styled components)
+Authentication: Firebase Authentication
+Database: Firebase Firestore
+Hosting: GitHub Pages
+Charts: Recharts
+State Management: React Context API
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+📂 Project Structure
+src/
+├── components/         # UI components
+│   ├── Auth/           # Authentication components
+│   ├── Dashboard/      # Dashboard components
+│   ├── Achievements/   # Achievement system
+│   ├── CourseTracking/ # Module tracking
+│   └── Analytics/      # Data visualization
+├── context/            # React Context providers
+│   ├── AuthContext.js  # Authentication context
+│   └── ProgressContext.js # Progress tracking context
+├── constants/          # App constants
+│   └── courseData.js   # Course modules data
+├── services/           # External services
+│   └── firebase.js     # Firebase configuration
+└── App.js              # Main application component
+🧠 Key Concepts
+Authentication Flow
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+User registers or logs in via Firebase Authentication
+User document is created/fetched from Firestore
+AuthContext provides the authentication state to the app
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Progress Tracking Logic
 
-## Learn More
+User marks modules as "In Progress" or "Completed"
+Progress is stored in Firestore and tracked in ProgressContext
+Achievements are unlocked based on progress milestones
+Analytics visualize progress over time
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+🛠️ Development
+Available Scripts
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm start - Runs the app in development mode
+npm test - Launches the test runner
+npm run build - Builds the app for production
+npm run deploy - Deploys to GitHub Pages
 
-### Code Splitting
+Adding New Modules
+To add new course modules, edit the src/constants/courseData.js file:
+javascriptexport const courseModules = [
+  {
+    id: 1,
+    title: "Module Title",
+    description: "Module description",
+    category: "Category Name"
+  },
+  // Add more modules here
+];
+Adding New Achievements
+To add new achievements, update the achievements array in Dashboard.js and the checkAndUnlockAchievements function in ProgressContext.js.
+📱 Responsive Design
+The app is designed to work on devices of all sizes:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Desktop: Full featured dashboard
+Tablet: Optimized layout with all features
+Mobile: Condensed view with essential features
 
-### Analyzing the Bundle Size
+🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Fork the repository
+Create your feature branch (git checkout -b feature/amazing-feature)
+Commit your changes (git commit -m 'Add some amazing feature')
+Push to the branch (git push origin feature/amazing-feature)
+Open a Pull Request
 
-### Making a Progressive Web App
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+🙏 Acknowledgements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+React
+Firebase
+Recharts
+React Router
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Built with ❤️ by Husein Alfeel
