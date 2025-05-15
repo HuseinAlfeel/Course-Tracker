@@ -15,7 +15,7 @@ const courseModules = [
     id: 3,
     title: "Intermediate HTML",
     category: "Front-End Fundamentals",
-    description: "Advanced HTML elements and semantic markup"
+    description: "Advanced HTML elements and semantic markup" //
   },
   {
     id: 4,
