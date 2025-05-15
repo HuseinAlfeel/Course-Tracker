@@ -73,16 +73,7 @@ const Navigation = () => {
   };
   
   return (
-    <header className="modern-header" style={{
-      backgroundColor: '#2c2c2c',
-      padding: isMobile ? '10px 15px' : '15px 20px',
-      borderBottom: '1px solid #3c3c3c',
-      position: 'sticky',
-      top: 0,
-      zIndex: 100,
-      width: '100%',
-      boxSizing: 'border-box'
-    }}>
+    <header className="modern-header">
       <div className="header-container" style={{
         display: 'flex',
         justifyContent: 'space-between',
@@ -90,9 +81,12 @@ const Navigation = () => {
         maxWidth: '1200px',
         margin: '0 auto',
         width: '100%',
-        flexDirection: isMobile ? 'column' : 'row',
-        gap: isMobile ? '10px' : '0'
+        height: '100%',
+        flexDirection: isMobile ? 'row' : 'row',
+        flexWrap: isMobile ? 'wrap' : 'nowrap',
+        gap: isMobile ? '5px' : '0'
       }}>
+        {/* Left section - Logo */}
         <div className="logo-section">
           <Link to="/" className="logo" style={{
             display: 'flex',
@@ -103,16 +97,22 @@ const Navigation = () => {
             <span className="logo-icon" style={{ fontSize: '1.5rem', marginRight: '8px' }}>📊</span>
             <span className="logo-text" style={{ 
               fontSize: isMobile ? '1.2rem' : '1.5rem', 
-              fontWeight: '600' 
+              fontWeight: '600',
+              display: isMobile ? 'none' : 'inline'
             }}>BootcampTracker</span>
           </Link>
         </div>
         
+        {/* Center section - Navigation */}
         <nav className="main-nav" style={{
           display: 'flex',
           gap: '10px',
           width: isMobile ? '100%' : 'auto',
-          justifyContent: isMobile ? 'center' : 'flex-start'
+          justifyContent: 'center',
+          order: isMobile ? 3 : 'unset',
+          marginTop: isMobile ? '8px' : '0',
+          flex: '1',
+          justifyContent: 'center'
         }}>
           <Link to="/" className={`nav-item ${location === '/' ? 'active' : ''}`} style={{
             display: 'flex',
@@ -126,8 +126,8 @@ const Navigation = () => {
             transition: 'all 0.2s ease',
             fontSize: isMobile ? '0.9rem' : '1rem'
           }}>
-            <span className="nav-icon" style={{ marginRight: '5px' }}>📈</span>
-            <span className="nav-text">Dashboard</span>
+            <span className="nav-icon" style={{ marginRight: isMobile ? '0' : '5px' }}>📈</span>
+            <span className="nav-text" style={{ display: isMobile ? 'none' : 'inline' }}>Dashboard</span>
           </Link>
           <Link to="/modules" className={`nav-item ${location === '/modules' ? 'active' : ''}`} style={{
             display: 'flex',
@@ -141,17 +141,17 @@ const Navigation = () => {
             transition: 'all 0.2s ease',
             fontSize: isMobile ? '0.9rem' : '1rem'
           }}>
-            <span className="nav-icon" style={{ marginRight: '5px' }}>📚</span>
-            <span className="nav-text">Modules</span>
+            <span className="nav-icon" style={{ marginRight: isMobile ? '0' : '5px' }}>📚</span>
+            <span className="nav-text" style={{ display: isMobile ? 'none' : 'inline' }}>Modules</span>
           </Link>
         </nav>
         
+        {/* Right section - User profile and logout */}
         <div className="user-section" style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '15px',
-          width: isMobile ? '100%' : 'auto',
-          justifyContent: isMobile ? 'space-between' : 'flex-end'
+          gap: '10px',
+          justifyContent: 'flex-end'
         }}>
           <div className="user-profile" style={{
             display: 'flex',
@@ -173,7 +173,8 @@ const Navigation = () => {
             </div>
             <span className="user-name" style={{
               color: '#e0e0e0',
-              fontSize: isMobile ? '0.9rem' : '1rem'
+              fontSize: isMobile ? '0.9rem' : '1rem',
+              display: isMobile ? 'none' : 'inline'
             }}>Hi, {currentUser?.name || 'User'}</span>
           </div>
           <button 
@@ -183,7 +184,7 @@ const Navigation = () => {
               display: 'flex',
               alignItems: 'center',
               gap: '5px',
-              padding: isMobile ? '6px 10px' : '8px 12px',
+              padding: isMobile ? '6px' : '8px 12px',
               backgroundColor: 'transparent',
               border: '1px solid #ff6b6b',
               borderRadius: '6px',
@@ -192,15 +193,11 @@ const Navigation = () => {
               transition: 'all 0.2s ease',
               fontSize: isMobile ? '0.85rem' : '0.9rem'
             }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 107, 107, 0.1)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-            }}
           >
             <span className="logout-icon">🚪</span>
-            <span className="logout-text">{isMobile ? 'Exit' : 'Logout'}</span>
+            <span className="logout-text" style={{
+              display: isMobile ? 'none' : 'inline'
+            }}>Logout</span>
           </button>
         </div>
       </div>

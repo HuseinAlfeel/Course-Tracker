@@ -206,13 +206,38 @@
   width: 100%;
 }
 
-/* Responsive styles for mobile */
+/* Media queries for responsive design */
 @media (max-width: 768px) {
   .header-container {
     padding: 0 15px;
   }
   
-  .logo-text, .nav-text, .user-name {
+  /* Mobile navigation layout */
+  .main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .nav-item {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-icon {
+    margin-right: 0;
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+  }
+  
+  .logo-text {
+    display: none;
+  }
+  
+  .user-name {
     display: none;
   }
   
@@ -220,23 +245,15 @@
     display: none;
   }
   
-  .nav-icon, .logout-icon {
-    margin-right: 0;
-    font-size: 1.2rem;
-  }
-  
-  .nav-item {
-    padding: 8px;
-  }
-  
   .user-section {
     gap: 10px;
   }
   
-  .logout-button {
-    padding: 8px;
+  .nav-item.active:after {
+    bottom: -10px;
+    height: 2px;
   }
-
+  
   .weekly-bars-container {
     height: 150px;
   }
@@ -249,7 +266,13 @@
     font-size: 0.75rem;
     padding: 5px 0;
   }
-
+  
+  /* Make sure the header stays fixed height on mobile */
+  .modern-header {
+    height: 70px;
+  }
+  
+  /* Ensure body is properly styled */
   body {
     margin: 0;
     padding: 0;

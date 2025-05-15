@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../Auth/AuthContext';
 import { ProgressContext } from '../../context/ProgressContext';
-import { courseModules } from '../../constants/courseData';
 
 // This component handles the Weekly Progress Chart specifically
 const WeeklyProgressChart = () => {
@@ -77,28 +76,56 @@ const WeeklyProgressChart = () => {
       <div 
         ref={containerRef}
         className="weekly-bars-container scrollable-container"
+        style={{
+          height: isMobile ? '150px' : '200px',
+          marginTop: '20px',
+          marginBottom: '10px'
+        }}
       >
-        <div className="weekly-bars">
+        <div className="weekly-bars" style={{
+          display: 'flex',
+          height: '100%',
+          alignItems: 'flex-end',
+          gap: isMobile ? '10px' : '30px',
+          padding: '0 10px',
+          minWidth: weeklyData.length > 4 ? `${weeklyData.length * (isMobile ? 80 : 100)}px` : '100%',
+          justifyContent: weeklyData.length <= 4 ? 'center' : 'flex-start'
+        }}>
           {weeklyData.map((user, index) => (
-            <div key={index} className="weekly-bar">
-              <div 
-                className="weekly-bar-fill"
-                style={{
-                  height: `${getBarHeight(user.thisWeek)}%`,
-                  backgroundColor: user.isCurrentUser ? '#4d9aff' : 
-                                  index === 0 ? '#4dff9d' : 
-                                  index === 1 ? '#ff9d4d' : '#4f4f4f',
-                  minHeight: user.thisWeek > 0 ? '20px' : '0'
-                }}
-              />
-              <div className="weekly-bar-label">
+            <div key={index} className="weekly-bar" style={{
+              flex: '0 0 auto',
+              width: isMobile ? '70px' : '90px',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'flex-end'
+            }}>
+              <div className="weekly-bar-fill" style={{
+                width: '100%',
+                height: `${getBarHeight(user.thisWeek)}%`,
+                backgroundColor: user.isCurrentUser ? '#4d9aff' : 
+                              index === 0 ? '#4dff9d' : 
+                              index === 1 ? '#ff9d4d' : '#4f4f4f',
+                borderRadius: '6px 6px 0 0',
+                minHeight: user.thisWeek > 0 ? '20px' : '0',
+                transition: 'height 0.5s ease-in-out'
+              }} />
+              <div className="weekly-bar-label" style={{
+                padding: isMobile ? '5px 0' : '10px 0',
+                color: '#b3b3b3',
+                fontSize: isMobile ? '0.75rem' : '0.85rem',
+                textAlign: 'center',
+                marginTop: '5px',
+                width: '100%'
+              }}>
                 <div style={{ 
                   color: user.isCurrentUser ? '#ffffff' : '#b3b3b3', 
                   fontWeight: user.isCurrentUser ? '600' : '400',
                   whiteSpace: 'nowrap',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
-                  maxWidth: '100px'
+                  maxWidth: isMobile ? '60px' : '90px'
                 }}>
                   {user.name} {user.isCurrentUser && '(You)'}
                 </div>
@@ -115,7 +142,12 @@ const WeeklyProgressChart = () => {
         </div>
       </div>
       
-      <div className="chart-summary">
+      <div className="chart-summary" style={{
+        textAlign: 'center',
+        marginTop: '20px',
+        color: '#b3b3b3',
+        fontSize: isMobile ? '0.85rem' : '1rem'
+      }}>
         {weeklyData.length <= 1 ? 
           "Invite your teammates to join and track their progress!" : 
           `${weeklyData[0].name} is leading this week with ${weeklyData[0].thisWeek} modules completed!`
