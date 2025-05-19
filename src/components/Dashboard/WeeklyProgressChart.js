@@ -86,24 +86,23 @@ const WeeklyProgressChart = ({ userProgress, allUsersProgress, currentUser }) =>
     container: {
       backgroundColor: '#2c2c2c', 
       borderRadius: '10px', 
-      padding: isMobile ? '15px' : '20px', 
+      padding: isMobile ? '12px' : '15px', // Reduced padding
       boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-      marginBottom: isMobile ? '20px' : '30px',
+      marginBottom: isMobile ? '15px' : '20px', // Reduced margin
       border: '1px solid #3c3c3c',
-      overflow: 'visible', // Changed to visible to allow tooltips to show
-      position: 'relative'
+      overflow: 'visible' // Changed to visible to allow tooltips to show
     },
     title: {
       color: '#ffffff',
       fontSize: isMobile ? '1.1rem' : '1.25rem',
       marginTop: 0,
-      marginBottom: '15px'
+      marginBottom: '12px' // Reduced margin
     },
     barsContainer: {
       position: 'relative',
-      height: isMobile ? '170px' : '200px', // Increased height
-      marginTop: '40px', // Space for tooltips above
-      marginBottom: '20px',
+      height: isMobile ? '150px' : '180px', // Reduced height
+      marginTop: '30px', // Reduced margin
+      marginBottom: '15px', // Reduced margin
       paddingLeft: '10px',
       paddingRight: '10px',
     },
@@ -115,14 +114,14 @@ const WeeklyProgressChart = ({ userProgress, allUsersProgress, currentUser }) =>
       display: 'flex',
       height: '100%',
       alignItems: 'flex-end',
-      gap: isMobile ? '15px' : '35px',
+      gap: isMobile ? '12px' : '30px', // Reduced gap
       padding: '0 10px',
-      minWidth: weeklyData.length > 4 ? `${weeklyData.length * (isMobile ? 85 : 100)}px` : '100%',
+      minWidth: weeklyData.length > 4 ? `${weeklyData.length * (isMobile ? 75 : 90)}px` : '100%',
       justifyContent: weeklyData.length <= 4 ? 'center' : 'flex-start'
     },
     bar: (isHovered) => ({
       flex: '0 0 auto',
-      width: isMobile ? '65px' : '80px',
+      width: isMobile ? '60px' : '75px', // Reduced width
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
@@ -167,11 +166,11 @@ const WeeklyProgressChart = ({ userProgress, allUsersProgress, currentUser }) =>
       zIndex: 2
     }),
     barLabel: {
-      padding: isMobile ? '5px 0' : '10px 0',
+      padding: isMobile ? '5px 0' : '8px 0', // Reduced padding
       color: '#b3b3b3',
       fontSize: isMobile ? '0.75rem' : '0.85rem',
       textAlign: 'center',
-      marginTop: '5px',
+      marginTop: '4px', // Reduced margin
       width: '100%'
     },
     userName: (user, isHovered) => ({
@@ -191,7 +190,7 @@ const WeeklyProgressChart = ({ userProgress, allUsersProgress, currentUser }) =>
     }),
     summary: {
       textAlign: 'center',
-      marginTop: '15px',
+      marginTop: '12px', // Reduced margin
       color: '#b3b3b3',
       fontSize: isMobile ? '0.85rem' : '0.95rem'
     },
@@ -240,7 +239,7 @@ const WeeklyProgressChart = ({ userProgress, allUsersProgress, currentUser }) =>
       overflowX: 'auto',
       overflowY: 'visible',
       paddingTop: '5px',
-      paddingBottom: '10px',
+      paddingBottom: '8px', // Reduced padding
       marginLeft: '-10px', 
       marginRight: '-10px',
       paddingLeft: '10px',

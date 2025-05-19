@@ -25,9 +25,7 @@ const Dashboard = () => {
       backgroundColor: '#1e1e1e',
       width: '100%',
       margin: 0,
-      padding: 0,
-      minHeight: 'calc(100vh - 70px)',
-      overflowX: 'hidden'
+      padding: 0, // Remove padding here
     }}>
       <div style={{
         width: '100%', 
@@ -41,15 +39,16 @@ const Dashboard = () => {
         overflow: 'hidden',
         boxSizing: 'border-box'
       }}>
-        <h1 style={{
-          fontSize: isMobile ? '1.5rem' : '2rem', 
-          marginBottom: isMobile ? '15px' : '20px', 
-          color: '#ffffff', 
-          textAlign: 'center',
-          fontWeight: '700'
-        }}>
-          Course Tracker
-        </h1>
+          <h1 style={{
+        fontSize: isMobile ? '1.4rem' : '1.8rem', // Smaller heading
+        marginTop: '5px', // Reduced top margin
+        marginBottom: isMobile ? '10px' : '15px', // Reduced bottom margin
+        color: '#ffffff', 
+        textAlign: 'center',
+        fontWeight: '700'
+      }}>
+        Course Tracker
+      </h1>
         
         <DashboardHeader currentUser={currentUser} />
         

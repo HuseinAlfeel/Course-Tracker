@@ -9,9 +9,9 @@ const AchievementsPanel = ({ userAchievements }) => {
     container: {
       backgroundColor: '#2c2c2c', 
       borderRadius: '10px', 
-      padding: isMobile ? '15px' : '20px', 
+      padding: isMobile ? '12px' : '15px', // Reduced padding
       boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-      marginBottom: isMobile ? '20px' : '30px',
+      marginBottom: isMobile ? '15px' : '20px', // Reduced margin
       border: '1px solid #3c3c3c',
       overflow: 'hidden'
     },
@@ -19,9 +19,9 @@ const AchievementsPanel = ({ userAchievements }) => {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: isMobile ? '15px' : '20px',
+      marginBottom: isMobile ? '12px' : '15px', // Reduced margin
       flexDirection: isMobile ? 'column' : 'row',
-      gap: isMobile ? '10px' : '0'
+      gap: isMobile ? '8px' : '0' // Reduced gap
     },
     title: {
       color: '#ffffff',
@@ -42,19 +42,19 @@ const AchievementsPanel = ({ userAchievements }) => {
     grid: {
       display: 'grid',
       gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(auto-fill, minmax(150px, 1fr))',
-      gap: isMobile ? '10px' : '15px',
+      gap: isMobile ? '8px' : '12px', // Reduced gap
       overflow: 'auto',
-      paddingBottom: '10px'
+      paddingBottom: '8px'
     },
     card: (unlocked, color) => ({
       backgroundColor: unlocked ? '#2c2c2c' : 'rgba(44, 44, 44, 0.5)',
       borderRadius: '8px',
-      padding: isMobile ? '10px' : '15px',
+      padding: isMobile ? '8px' : '12px', // Reduced padding
       textAlign: 'center',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      gap: isMobile ? '5px' : '10px',
+      gap: isMobile ? '4px' : '8px', // Reduced gap
       boxShadow: unlocked ? '0 4px 6px rgba(0,0,0,0.2)' : 'none',
       border: unlocked ? `2px solid ${color}` : '2px solid #3c3c3c',
       opacity: unlocked ? 1 : 0.7,
@@ -63,7 +63,7 @@ const AchievementsPanel = ({ userAchievements }) => {
     }),
     icon: {
       fontSize: isMobile ? '1.5rem' : '2rem',
-      marginBottom: isMobile ? '3px' : '5px'
+      marginBottom: isMobile ? '2px' : '4px' // Reduced margin
     },
     cardTitle: {
       color: '#ffffff',
@@ -80,12 +80,12 @@ const AchievementsPanel = ({ userAchievements }) => {
     lockedText: {
       fontSize: isMobile ? '0.7rem' : '0.8rem',
       color: '#999',
-      marginTop: '5px'
+      marginTop: '4px' // Reduced margin
     },
     counter: {
       color: '#b3b3b3',
       fontSize: isMobile ? '0.8rem' : '0.9rem',
-      marginTop: '10px',
+      marginTop: '8px', // Reduced margin
       textAlign: 'center'
     }
   };

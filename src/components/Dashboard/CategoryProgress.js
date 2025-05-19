@@ -35,33 +35,33 @@ const CategoryProgress = ({ userProgress }) => {
     container: {
       backgroundColor: '#2c2c2c', 
       borderRadius: '10px', 
-      padding: isMobile ? '15px' : '20px', 
+      padding: isMobile ? '12px' : '15px', // Reduced padding
       boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-      marginBottom: isMobile ? '20px' : '30px',
+      marginBottom: isMobile ? '15px' : '20px', // Reduced margin
       border: '1px solid #3c3c3c'
     },
     title: {
       color: '#ffffff',
       fontSize: isMobile ? '1.1rem' : '1.25rem',
       marginTop: 0,
-      marginBottom: '15px'
+      marginBottom: '12px' // Reduced margin
     },
     grid: {
       display: 'grid', 
       gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))', 
-      gap: isMobile ? '10px' : '15px'
+      gap: isMobile ? '8px' : '12px' // Reduced gap
     },
     card: {
       backgroundColor: '#323232', 
       borderRadius: '8px', 
-      padding: isMobile ? '12px' : '15px',
+      padding: isMobile ? '10px' : '12px', // Reduced padding
       border: '1px solid #3c3c3c'
     },
     header: {
       display: 'flex', 
       justifyContent: 'space-between', 
       alignItems: 'center',
-      marginBottom: '10px'
+      marginBottom: '8px' // Reduced margin
     },
     categoryTitle: {
       fontWeight: '600',
@@ -81,7 +81,7 @@ const CategoryProgress = ({ userProgress }) => {
       height: '10px', 
       backgroundColor: '#3c3c3c', 
       borderRadius: '5px',
-      marginBottom: '10px',
+      marginBottom: '8px', // Reduced margin
       overflow: 'hidden'
     },
     progressFill: (percentage, color) => ({

@@ -81,13 +81,13 @@ const ProgressSummaryCards = ({ userProgress, currentUser }) => {
     container: {
       display: 'grid', 
       gridTemplateColumns: isMobile ? '1fr' : (isTablet ? 'repeat(2, 1fr)' : 'repeat(auto-fit, minmax(300px, 1fr))'), 
-      gap: isMobile ? '15px' : '20px',
-      marginBottom: isMobile ? '20px' : '30px'
+      gap: isMobile ? '12px' : '15px', // Reduced gap
+      marginBottom: isMobile ? '15px' : '20px' // Reduced margin
     },
     card: {
       backgroundColor: '#2c2c2c', 
       borderRadius: '10px', 
-      padding: isMobile ? '15px' : '20px', 
+      padding: isMobile ? '12px' : '15px', // Reduced padding
       boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
       border: '1px solid #3c3c3c'
     },
@@ -95,20 +95,20 @@ const ProgressSummaryCards = ({ userProgress, currentUser }) => {
       marginTop: '0',
       color: '#ffffff',
       fontSize: isMobile ? '1.1rem' : '1.25rem',
-      marginBottom: '15px'
+      marginBottom: '12px' // Reduced margin
     },
     progressValue: {
       fontSize: isMobile ? '2rem' : '2.5rem',
       fontWeight: 'bold',
       color: '#4d9aff',
-      marginBottom: '15px'
+      marginBottom: '12px' // Reduced margin
     },
     progressBar: {
       width: '100%', 
       height: '10px', 
       backgroundColor: '#3c3c3c', 
       borderRadius: '5px',
-      marginBottom: '20px',
+      marginBottom: '15px', // Reduced margin
       overflow: 'hidden'
     },
     progressFill: {
@@ -120,10 +120,10 @@ const ProgressSummaryCards = ({ userProgress, currentUser }) => {
     },
     infoBox: {
       backgroundColor: '#213547', 
-      padding: isMobile ? '12px' : '15px', 
+      padding: isMobile ? '10px' : '12px', // Reduced padding
       borderRadius: '8px',
       borderLeft: '4px solid #4d9aff',
-      marginTop: '10px'
+      marginTop: '8px' // Reduced margin
     },
     infoTitle: {
       fontWeight: 'bold',
@@ -140,8 +140,8 @@ const ProgressSummaryCards = ({ userProgress, currentUser }) => {
       flexDirection: 'column', 
       alignItems: 'center', 
       justifyContent: 'center',
-      marginTop: '20px',
-      marginBottom: '20px'
+      marginTop: '15px', // Reduced margin
+      marginBottom: '15px' // Reduced margin
     },
     streakValue: {
       fontSize: isMobile ? '2.8rem' : '3.5rem',
@@ -157,10 +157,10 @@ const ProgressSummaryCards = ({ userProgress, currentUser }) => {
     },
     streakInfoBox: {
       backgroundColor: '#352918', 
-      padding: isMobile ? '12px' : '15px', 
+      padding: isMobile ? '10px' : '12px', // Reduced padding
       borderRadius: '8px',
       borderLeft: '4px solid #ff9d4d',
-      marginTop: '10px',
+      marginTop: '8px', // Reduced margin
       textAlign: 'center'
     },
     streakInfoText: {
@@ -169,10 +169,10 @@ const ProgressSummaryCards = ({ userProgress, currentUser }) => {
     },
     nextModuleBox: {
       backgroundColor: nextModule.status === 'in-progress' ? '#352918' : '#18352a', 
-      padding: isMobile ? '12px' : '15px', 
+      padding: isMobile ? '10px' : '12px', // Reduced padding
       borderRadius: '8px',
       borderLeft: `4px solid ${nextModule.status === 'in-progress' ? '#ff9d4d' : '#4dff9d'}`,
-      marginTop: '10px'
+      marginTop: '8px' // Reduced margin
     },
     nextModuleTitle: {
       fontWeight: 'bold',
@@ -195,7 +195,7 @@ const ProgressSummaryCards = ({ userProgress, currentUser }) => {
       transition: 'all 0.2s ease',
       boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
       fontSize: isMobile ? '0.9rem' : '1rem',
-      marginTop: '20px'
+      marginTop: '15px' // Reduced margin
     }
   };
   

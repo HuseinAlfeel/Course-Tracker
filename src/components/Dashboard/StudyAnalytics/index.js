@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import StudyHoursChart from './StudyHoursChart';
 import StudySummary from './StudySummary';
-import SkillsRadarChart from './SkillsRadarChart'; // Import the new component
+import SkillsRadarChart from './SkillsRadarChart';
 
 const StudyAnalytics = ({ userProgress, allUsersProgress, currentUser }) => {
   const isMobile = window.innerWidth <= 768;
@@ -95,9 +95,9 @@ const StudyAnalytics = ({ userProgress, allUsersProgress, currentUser }) => {
     container: {
       backgroundColor: '#2c2c2c', 
       borderRadius: '10px', 
-      padding: isMobile ? '15px' : '20px', 
+      padding: isMobile ? '12px' : '15px', // Reduced padding
       boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-      marginBottom: isMobile ? '20px' : '30px',
+      marginBottom: isMobile ? '15px' : '20px', // Reduced margin
       border: '1px solid #3c3c3c',
       overflow: 'hidden'
     },
@@ -105,7 +105,7 @@ const StudyAnalytics = ({ userProgress, allUsersProgress, currentUser }) => {
       color: '#ffffff',
       fontSize: isMobile ? '1.1rem' : '1.25rem',
       marginTop: 0,
-      marginBottom: '15px',
+      marginBottom: '12px', // Reduced margin
       display: 'flex',
       alignItems: 'center',
       gap: '10px'
@@ -113,7 +113,7 @@ const StudyAnalytics = ({ userProgress, allUsersProgress, currentUser }) => {
     divider: {
       height: '1px',
       backgroundColor: '#3c3c3c',
-      margin: '30px 0',
+      margin: '20px 0', // Reduced margin
       opacity: 0.7
     }
   };

@@ -57,6 +57,11 @@
           /* Prevent pull-to-refresh */
           touch-action: manipulation;
         }
+        
+        /* Ensure content doesn't hide under the bottom bar */
+        .App {
+          padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
       }
     </style>
   </head>

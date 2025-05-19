@@ -85,11 +85,13 @@
 /* Top Header for branding */
 .top-header {
   background: linear-gradient(90deg, #1a1a1a 0%, #2c2c2c 100%);
-  padding: env(safe-area-inset-top, 0px) 20px 10px 20px;
+  padding: env(safe-area-inset-top, 0px) 20px 8px 20px; /* Reduced bottom padding */
   border-bottom: 1px solid #3d3d3d;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 50px; /* Fixed height for consistency */
+  box-sizing: border-box;
 }
 
 .logo {
@@ -211,12 +213,18 @@
 
 /* App container adjustments */
 .app-container {
+  padding-top: 0; /* Remove top padding */
   padding-bottom: 70px; /* Space for bottom nav */
   padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px)); /* Additional space for iPhone X+ */
   min-height: 100vh;
   box-sizing: border-box;
 }
 
+
+/* Dashboard component spacing adjustments */
+.dashboard-content {
+  padding: 10px 15px; /* Reduced padding */
+}
 /* Modern Header Styles (original styles kept for backward compatibility) */
 .modern-header {
   background: linear-gradient(90deg, #1a1a1a 0%, #2c2c2c 100%);
@@ -554,17 +562,34 @@ html, body {
   color: #b3b3b3;
 }
 
+/* Media queries for responsive design */
 @media (max-width: 768px) {
-  .chart-container {
-    padding: 15px;
-    margin-bottom: 20px;
+  .top-header {
+    height: 40px; /* Even smaller on mobile */
+    padding-top: calc(env(safe-area-inset-top, 0px));
+    padding-bottom: 5px;
   }
-
-  .chart-title {
-    font-size: 1.1rem;
+  
+  .logo {
+    font-size: 1.1rem; /* Smaller logo font size */
   }
-
-  .chart-summary {
-    font-size: 0.85rem;
+  
+  .logo-icon {
+    font-size: 1.2rem;
+  }
+  
+  .logout-button {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+  }
+  
+  /* Even less padding for content on mobile */
+  .dashboard-content {
+    padding: 8px 12px;
+  }
+  
+  /* First item in dashboard should have less margin */
+  .dashboard-content > div:first-child {
+    margin-top: 5px;
   }
 }

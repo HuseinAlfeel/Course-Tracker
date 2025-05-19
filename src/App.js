@@ -148,7 +148,9 @@ const ProtectedRoute = ({ children }) => {
     <>
       <TopHeader currentUser={currentUser} logout={logout} />
       <div className="app-container" style={{ backgroundColor: '#1e1e1e' }}>
-        {children}
+        <div className="dashboard-content">
+          {children}
+        </div>
       </div>
       <BottomNavigation currentUser={currentUser} />
     </>

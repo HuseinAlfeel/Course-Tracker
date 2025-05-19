@@ -16,10 +16,10 @@ const DashboardHeader = ({ currentUser }) => {
   const styles = {
     container: {
       backgroundColor: '#2c2c2c', 
-      padding: isMobile ? '15px' : '20px', 
+      padding: isMobile ? '12px' : '15px', // Reduced padding
       borderRadius: '10px', 
       textAlign: 'center',
-      marginBottom: isMobile ? '20px' : '30px',
+      marginBottom: isMobile ? '15px' : '20px', // Reduced margin
       boxShadow: '0 4px 6px rgba(0,0,0,0.2)',
       border: '1px solid #3c3c3c'
     },
