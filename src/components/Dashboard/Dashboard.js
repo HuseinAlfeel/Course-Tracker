@@ -74,8 +74,10 @@ const Dashboard = () => {
         />
         
         <StudyAnalytics 
-          userProgress={userProgress}
-        />
+        userProgress={userProgress}
+        allUsersProgress={allUsersProgress}
+        currentUser={currentUser}
+       />
         
         <CategoryProgress 
           userProgress={userProgress}
