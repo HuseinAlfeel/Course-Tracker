@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/Course-Tracker/static/css/main.cda24c16.css",
-    "main.js": "/Course-Tracker/static/js/main.02f28f69.js",
+    "main.css": "/Course-Tracker/static/css/main.c9b48998.chunk.css",
+    "main.js": "/Course-Tracker/static/js/main.af623ec5.chunk.js",
+    "main.js.map": "/Course-Tracker/static/js/main.af623ec5.chunk.js.map",
+    "runtime~main.js": "/Course-Tracker/static/js/runtime~main.14e160f6.js",
+    "runtime~main.js.map": "/Course-Tracker/static/js/runtime~main.14e160f6.js.map",
+    "static/js/2.9a8ffa55.chunk.js": "/Course-Tracker/static/js/2.9a8ffa55.chunk.js",
+    "static/js/2.9a8ffa55.chunk.js.map": "/Course-Tracker/static/js/2.9a8ffa55.chunk.js.map",
     "index.html": "/Course-Tracker/index.html",
-    "main.cda24c16.css.map": "/Course-Tracker/static/css/main.cda24c16.css.map",
-    "main.02f28f69.js.map": "/Course-Tracker/static/js/main.02f28f69.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.cda24c16.css",
-    "static/js/main.02f28f69.js"
-  ]
+    "precache-manifest.12fc86b104b97afebaf070272dd1b3af.js": "/Course-Tracker/precache-manifest.12fc86b104b97afebaf070272dd1b3af.js",
+    "service-worker.js": "/Course-Tracker/service-worker.js",
+    "static/css/main.c9b48998.chunk.css.map": "/Course-Tracker/static/css/main.c9b48998.chunk.css.map"
+  }
 }
