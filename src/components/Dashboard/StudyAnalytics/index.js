@@ -1,5 +1,3 @@
-// Update file: src/components/Dashboard/StudyAnalytics/index.js
-
 import React, { useState, useEffect } from 'react';
 import StudyHoursChart from './StudyHoursChart';
 import StudySummary from './StudySummary';

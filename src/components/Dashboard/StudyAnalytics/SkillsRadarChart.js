@@ -1,5 +1,3 @@
-// New component: src/components/Dashboard/StudyAnalytics/SkillsRadarChart.js
-
 import React from 'react';
 import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
