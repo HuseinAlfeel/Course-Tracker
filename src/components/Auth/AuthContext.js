@@ -4,9 +4,10 @@ import {
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged 
+  onAuthStateChanged,
+  updateProfile 
 } from 'firebase/auth';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 
 export const AuthContext = createContext();
 
@@ -20,6 +21,11 @@ export const AuthProvider = ({ children }) => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       
+      // Update display name
+      await updateProfile(user, {
+        displayName: name
+      });
+      
       // Create user document in Firestore
       try {
         await setDoc(doc(db, "users", user.uid), {
@@ -31,7 +37,11 @@ export const AuthProvider = ({ children }) => {
           joinDate: new Date().toISOString(),
           achievements: [],  // Add this field for achievements
           studySessions: [], // Add this field for study sessions
-          totalStudyTime: 0  // Add this field for total study time
+          totalStudyTime: 0,  // Add this field for total study time
+          bio: '',  // Profile info
+          goal: 'Complete the full course',  // Learning goal
+          studyReminder: false,  // Study preference
+          hoursTarget: 5  // Weekly study hours target
         });
       } catch (firestoreError) {
         console.error("Error creating user document:", firestoreError);
@@ -58,6 +68,7 @@ export const AuthProvider = ({ children }) => {
         setCurrentUser({
           uid: userCredential.user.uid,
           email: userCredential.user.email,
+          auth: userCredential.user, // Store auth object for profile updates
           ...userData
         });
       }
@@ -73,6 +84,25 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     return signOut(auth);
   };
+  
+  // Update user profile
+  const updateUserProfile = async (userId, profileData) => {
+    try {
+      const userDocRef = doc(db, "users", userId);
+      await updateDoc(userDocRef, profileData);
+      
+      // Update the current user state
+      setCurrentUser(prevUser => ({
+        ...prevUser,
+        ...profileData
+      }));
+      
+      return true;
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      throw error;
+    }
+  };
 
   // Listen for auth state changes
   useEffect(() => {
@@ -85,6 +115,7 @@ export const AuthProvider = ({ children }) => {
             setCurrentUser({
               uid: user.uid,
               email: user.email,
+              auth: user, // Store auth object for profile updates
               ...userDoc.data()
             });
           } else {
@@ -98,18 +129,27 @@ export const AuthProvider = ({ children }) => {
               joinDate: new Date().toISOString(),
               achievements: [],
               studySessions: [],
-              totalStudyTime: 0
+              totalStudyTime: 0,
+              bio: '',
+              goal: 'Complete the full course',
+              studyReminder: false,
+              hoursTarget: 5
             });
             
             setCurrentUser({
               uid: user.uid,
               email: user.email,
+              auth: user,
               name: user.displayName || user.email.split('@')[0],
               progress: [],
               streak: 0,
               achievements: [],
               studySessions: [],
-              totalStudyTime: 0
+              totalStudyTime: 0,
+              bio: '',
+              goal: 'Complete the full course',
+              studyReminder: false,
+              hoursTarget: 5
             });
           }
         } catch (error) {
@@ -117,6 +157,7 @@ export const AuthProvider = ({ children }) => {
           setCurrentUser({
             uid: user.uid,
             email: user.email,
+            auth: user,
             name: user.displayName || user.email.split('@')[0]
           });
         }
@@ -134,6 +175,7 @@ export const AuthProvider = ({ children }) => {
     register,
     login,
     logout,
+    updateUserProfile,
     loading
   };
 

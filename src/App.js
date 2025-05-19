@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import ModuleList from './components/CourseTracking/ModuleList';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
+import Profile from './components/Profile/Profile'; // Import the Profile component
 import './App.css';
 
 // Top Header Component
@@ -98,12 +99,10 @@ const BottomNavigation = ({ currentUser }) => {
             <span className="nav-text">Modules</span>
           </Link>
           
-          <button className="user-button" onClick={toggleUserMenu}>
-            <div className="user-avatar">
-              {currentUser?.name?.charAt(0) || 'U'}
-            </div>
+          <Link to="/profile" className={`nav-item ${location === '/profile' ? 'active' : ''}`}>
+            <span className="nav-icon">👤</span>
             <span className="nav-text">Profile</span>
-          </button>
+          </Link>
         </div>
       </div>
     </>
@@ -183,6 +182,12 @@ function App() {
               <Route path="/modules" element={
                 <ProtectedRoute>
                   <ModuleList />
+                </ProtectedRoute>
+              } />
+              
+              <Route path="/profile" element={
+                <ProtectedRoute>
+                  <Profile />
                 </ProtectedRoute>
               } />
               
