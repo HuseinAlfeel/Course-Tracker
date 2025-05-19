@@ -1,6 +1,9 @@
+// Update file: src/components/Dashboard/StudyAnalytics/index.js
+
 import React, { useState, useEffect } from 'react';
 import StudyHoursChart from './StudyHoursChart';
 import StudySummary from './StudySummary';
+import SkillsRadarChart from './SkillsRadarChart'; // Import the new component
 
 const StudyAnalytics = ({ userProgress, allUsersProgress, currentUser }) => {
   const isMobile = window.innerWidth <= 768;
@@ -108,6 +111,12 @@ const StudyAnalytics = ({ userProgress, allUsersProgress, currentUser }) => {
       display: 'flex',
       alignItems: 'center',
       gap: '10px'
+    },
+    divider: {
+      height: '1px',
+      backgroundColor: '#3c3c3c',
+      margin: '30px 0',
+      opacity: 0.7
     }
   };
   
@@ -119,11 +128,21 @@ const StudyAnalytics = ({ userProgress, allUsersProgress, currentUser }) => {
       </h3>
       
       <StudySummary weeklyStudyHours={totalHours} />
+      
       <StudyHoursChart 
         studyHoursData={weeklyStudyData} 
         isMobile={isMobile}
         onWeekChange={handleWeekChange}
       />
+      
+      {/* Add divider between charts */}
+      <div style={styles.divider}></div>
+      
+      {/* Add the new Radar Chart component */}
+      <SkillsRadarChart 
+        userProgress={userProgress}
+      />
+      
     </div>
   );
 };
