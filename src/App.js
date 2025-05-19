@@ -99,7 +99,7 @@ const Navigation = () => {
               fontSize: isMobile ? '1.2rem' : '1.5rem', 
               fontWeight: '600',
               display: isMobile ? 'none' : 'inline'
-            }}>BootcampTracker</span>
+            }}>Devolve</span>
           </Link>
         </div>
         

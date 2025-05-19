@@ -48,7 +48,7 @@ const Dashboard = () => {
           textAlign: 'center',
           fontWeight: '700'
         }}>
-          Web Development Bootcamp Tracker
+          Course Tracker
         </h1>
         
         <DashboardHeader currentUser={currentUser} />
