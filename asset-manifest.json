@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Course-Tracker/static/css/main.6a8cc740.css",
-    "main.js": "/Course-Tracker/static/js/main.795be64d.js",
+    "main.js": "/Course-Tracker/static/js/main.972267e6.js",
     "index.html": "/Course-Tracker/index.html",
     "main.6a8cc740.css.map": "/Course-Tracker/static/css/main.6a8cc740.css.map",
-    "main.795be64d.js.map": "/Course-Tracker/static/js/main.795be64d.js.map"
+    "main.972267e6.js.map": "/Course-Tracker/static/js/main.972267e6.js.map"
   },
   "entrypoints": [
     "static/css/main.6a8cc740.css",
-    "static/js/main.795be64d.js"
+    "static/js/main.972267e6.js"
   ]
 }
