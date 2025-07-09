@@ -1,8 +1,16 @@
-Devolve
+Devolve –  Bootcamp Progress Tracker
 
-Try it out :)
-https://huseinalfeel.github.io/Course-Tracker/
-currently it is made specificly for one great bootcamp that I recommend anyone to do: https://www.udemy.com/course/the-complete-web-development-bootcamp/?couponCode=LETSLEARNNOW
+I built Devolve while working through Angela Yu’s Udemy Bootcamp acclaimed MERN-Stack Bootcamp on Udemy. The goal? Make it effortless—and fun—for classmates to see how far they’ve come, spot what’s next, and cheer each other on.
+
+🔍 Lesson-by-lesson tracking – Know exactly which videos you’ve finished and what’s still ahead.
+
+🤝 Friendly accountability – Share your progress so study partners can celebrate wins (or nudge you when you fall behind).
+
+⚡ Lightweight & open-source – Runs entirely in the browser; no log-ins, no fuss.
+
+Try it here: https://huseinalfeel.github.io/Course-Tracker/ 
+
+As I said, it is made specificly for one great bootcamp that I recommend anyone to do: https://www.udemy.com/course/the-complete-web-development-bootcamp/?couponCode=LETSLEARNNOW
 Images to be added later ***
 A comprehensive learning progress tracker for web development bootcamps and courses. Track your journey from beginner to professional with visual progress indicators, streak tracking, and gamified achievements.
 Live Demo
