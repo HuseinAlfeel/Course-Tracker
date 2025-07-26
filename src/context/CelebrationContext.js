@@ -20,10 +20,11 @@ export const CelebrationProvider = ({ children }) => {
   // Play sound utility with error handling
   const playSound = useCallback((soundFile) => {
     try {
-      const audio = new Audio(`${process.env.PUBLIC_URL}/sounds/${soundFile}`);
+      // Simple path that works for both local and GitHub Pages
+      const audio = new Audio(`./sounds/${soundFile}`);
       audio.volume = 0.5;
       audio.play().catch(error => {
-        console.log(`Sound file ${soundFile} not found or couldn't play:`, error);
+        console.log(`Sound file ${soundFile} couldn't play:`, error);
       });
     } catch (error) {
       console.log(`Error playing sound ${soundFile}:`, error);
