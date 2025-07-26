@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { courseModules, categories } from '../../constants/courseData';
 
 const CategoryProgress = ({ userProgress }) => {
-  const [hoveredCategory, setHoveredCategory] = useState(null);
   const isMobile = window.innerWidth <= 768;
   
   // Calculate category completion
@@ -105,8 +104,6 @@ const CategoryProgress = ({ userProgress }) => {
           <div 
             key={index} 
             style={styles.card}
-            onMouseEnter={() => setHoveredCategory(index)}
-            onMouseLeave={() => setHoveredCategory(null)}
           >
             <div style={styles.header}>
               <div>

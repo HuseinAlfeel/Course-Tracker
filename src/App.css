@@ -82,45 +82,61 @@
   margin-bottom: 5px;
 }
 
-/* Top Header for branding */
+/* Top Header for branding - FIXED ALIGNMENT */
 .top-header {
   background: linear-gradient(90deg, #1a1a1a 0%, #2c2c2c 100%);
-  padding: env(safe-area-inset-top, 0px) 20px 8px 20px; /* Reduced bottom padding */
+  padding: 0 20px; /* Simplified padding - removed conflicting values */
   border-bottom: 1px solid #3d3d3d;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  height: 50px; /* Fixed height for consistency */
+  align-items: center; /* This centers vertically */
+  height: 60px; /* Increased height for better spacing */
   box-sizing: border-box;
+  position: sticky; /* Added for better behavior */
+  top: 0;
+  z-index: 100; /* Ensure it stays on top */
 }
 
 .logo {
   display: flex;
-  align-items: center;
+  align-items: center; /* Vertically center logo items */
   text-decoration: none;
   color: #fff;
   font-weight: 700;
   font-size: 1.3rem;
+  transition: color 0.2s ease; /* Added smooth transition */
+}
+
+.logo:hover {
+  color: #4d9aff; /* Added hover effect */
 }
 
 .logo-icon {
   margin-right: 10px;
   font-size: 1.4rem;
+  display: inline-flex; /* Better alignment for emoji */
+  align-items: center;
 }
 
 .logout-button {
   display: flex;
-  align-items: center;
+  align-items: center; /* Vertically center button content */
+  justify-content: center; /* Horizontally center button content */
   gap: 6px;
   background-color: rgba(229, 62, 62, 0.1);
   color: #ff8585;
   border: 1px solid #ff8585;
-  padding: 6px 12px;
+  padding: 8px 16px; /* Increased padding for better touch targets */
   border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s ease;
   font-size: 0.9rem;
+  min-height: 36px; /* Minimum height for consistent sizing */
+  white-space: nowrap; /* Prevent text wrapping */
+  /* Additional fixes for perfect alignment */
+  box-sizing: border-box;
+  vertical-align: middle;
 }
 
 .logout-button:hover {
@@ -304,6 +320,27 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3) rotate(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05) rotate(5deg);
+  }
+  70% {
+    transform: scale(0.95) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.6s ease-out;
 }
 
 /* Weekly Progress Chart specific styles */
@@ -594,7 +631,179 @@ html, body {
   }
 }
 
-/* Profile page specific styles */
+/* Motivation Mascot Styles - Clean Dark Theme */
+.motivation-mascot {
+  margin: 1.5rem auto;
+  width: 100%; /* Full width to match other elements */
+  max-width: 1200px; /* Same max-width as other elements */
+  background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #3a3a3a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.mascot-animation {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mascot-message {
+  color: #e0e0e0;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0;
+}
+
+/* Mobile responsive for mascot */
+@media (max-width: 768px) {
+  .motivation-mascot {
+    margin: 1rem;
+    padding: 16px;
+    width: calc(100% - 2rem); /* Account for margin */
+  }
+  
+  .mascot-animation {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .mascot-message {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+}
+
+/* Name Prompt Styles */
+.name-input-container {
+  margin: 1.5rem 0;
+}
+
+.name-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.name-input:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.name-submit-btn {
+  background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.name-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+.name-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.name-prompt-subtitle {
+  color: #7c3aed;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.skip-name-btn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 0.5rem;
+}
+
+.skip-name-btn:hover {
+  color: #374151;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .mascot-card {
+    padding: 16px;
+    margin: 0 0.5rem;
+    max-width: 100%;
+  }
+  
+  .mascot-animation {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .mascot-animation.small {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .message-text {
+    font-size: 1rem;
+  }
+  
+  .mascot-title {
+    font-size: 1.1rem;
+  }
+  
+  .motivation-mascot-container {
+    margin: 1rem auto;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mascot-animation {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .message-text {
+    font-size: 0.95rem;
+  }
+  
+  .mascot-card {
+    padding: 12px;
+  }
+}
 .profile-container {
   max-width: 800px;
   margin: 0 auto;

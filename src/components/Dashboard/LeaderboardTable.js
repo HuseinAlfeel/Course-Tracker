@@ -87,15 +87,12 @@ const LeaderboardTable = ({ allUsersProgress, currentUser }) => {
           break;
         case 2:
           color = '#c0c0c0'; // Silver
-          emoji = '🥈';
           break;
         case 3:
           color = '#cd7f32'; // Bronze
-          emoji = '🥉';
           break;
         default:
           color = '#718096';
-          emoji = '👍';
       }
       
       return {

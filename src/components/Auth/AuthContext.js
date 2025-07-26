@@ -54,12 +54,20 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Login function with improved handling
+  // 🔐 LOGIN: Enhanced with better error handling and user feedback
   const login = async (email, password) => {
-    console.log("Logging in with:", email);
+    console.log("🔐 Attempting login for:", email);
+    
     try {
+      setLoading(true);
+      
+      // Input validation
+      if (!email || !password) {
+        throw new Error('Email and password are required');
+      }
+      
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log("Login successful with Firebase Auth");
+      console.log("✅ Login successful with Firebase Auth");
       
       // Manually fetch user data to speed up the process
       const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
@@ -75,8 +83,34 @@ export const AuthProvider = ({ children }) => {
       
       return userCredential.user;
     } catch (error) {
-      console.error("Login error:", error);
-      throw error;
+      console.error("❌ Login error:", error);
+      
+      // Provide user-friendly error messages
+      let errorMessage = 'Login failed. Please try again.';
+      
+      switch (error.code) {
+        case 'auth/user-not-found':
+          errorMessage = 'No account found with this email address.';
+          break;
+        case 'auth/wrong-password':
+          errorMessage = 'Incorrect password. Please try again.';
+          break;
+        case 'auth/invalid-email':
+          errorMessage = 'Please enter a valid email address.';
+          break;
+        case 'auth/too-many-requests':
+          errorMessage = 'Too many failed attempts. Please try again later.';
+          break;
+        case 'auth/network-request-failed':
+          errorMessage = 'Network error. Please check your connection.';
+          break;
+        default:
+          errorMessage = error.message || errorMessage;
+      }
+      
+      throw new Error(errorMessage);
+    } finally {
+      setLoading(false);
     }
   };
 

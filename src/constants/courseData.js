@@ -169,144 +169,135 @@ const courseModules = [
   },
   {
     id: 29,
+    title: "Capstone Project - Use a Public API",
+    category: "Backend Development",
+    description: "Integrating and consuming third-party APIs in applications"
+  },
+  {
+    id: 30,
+    title: "Build Your Own API",
+    category: "Backend Development",
+    description: "Building and deploying custom RESTful APIs"
+  },
+  {
+    id: 31,
     title: "Databases",
     category: "Databases & Full Stack",
     description: "Introduction to database concepts and systems"
   },
   {
-    id: 30,
+    id: 32,
     title: "SQL",
     category: "Databases & Full Stack",
     description: "Working with relational databases and SQL"
   },
   {
-    id: 31,
-    title: "MongoDB",
-    category: "Databases & Full Stack",
-    description: "Using MongoDB NoSQL database"
-  },
-  {
-    id: 32,
-    title: "Mongoose",
-    category: "Databases & Full Stack",
-    description: "MongoDB object modeling for Node.js"
-  },
-  {
     id: 33,
-    title: "Putting Everything Together",
+    title: "PostgreSQL",
     category: "Databases & Full Stack",
-    description: "Combining front-end and back-end technologies"
+    description: "Using PostgreSQL relational database"
   },
   {
     id: 34,
-    title: "Deploying Your Web Application",
+    title: "Capstone Project - Book Notes",
     category: "Databases & Full Stack",
-    description: "Publishing web applications to production environments"
+    description: "Building a full-stack application with PostgreSQL"
   },
   {
     id: 35,
-    title: "Boss Level Challenge 4 - Blog Website Upgrade",
+    title: "Authentication and Security",
     category: "Databases & Full Stack",
-    description: "Enhancing a blog with database functionality"
+    description: "Handling Credentials & Designing a Secure Login"
   },
   {
     id: 36,
-    title: "Build Your Own RESTful API From Scratch",
-    category: "Databases & Full Stack",
-    description: "Creating a complete API with Node.js and databases"
-  },
-  {
-    id: 37,
-    title: "Authentication & Security",
-    category: "Databases & Full Stack",
-    description: "Implementing user authentication and security measures"
-  },
-  {
-    id: 38,
     title: "React.js",
     category: "Advanced Topics",
     description: "Building user interfaces with React"
   },
-  {
-    id: 39,
+    {
+    id: 37,
     title: "Web3 Decentralised App (DApp) Development with the Internet Computer",
     category: "Advanced Topics",
     description: "Creating blockchain-based decentralized applications"
   },
   {
-    id: 40,
-    title: "Build Your First DeFi (Decentralised Finance) DApp - DBANK",
+    id: 38,
+    title: "Build Your First Defi (Decentralised Finance) DApp - DBANK",
     category: "Advanced Topics",
-    description: "Developing a decentralized finance application"
+    description:  "Building a decentralized finance application with banking features"
   },
   {
-    id: 41,
+    id: 39,
     title: "Deploying to the ICP Live Blockchain",
     category: "Advanced Topics",
     description: "Publishing applications to the Internet Computer blockchain"
   },
   {
-    id: 42,
+    id: 40,
     title: "Building DApps on ICP with a React Frontend",
     category: "Advanced Topics",
     description: "Combining React with blockchain backends"
   },
+
+
   {
-    id: 43,
+    id: 41,
     title: "Create Your Own Crypto Token",
     category: "Advanced Topics",
     description: "Developing and deploying a cryptocurrency token"
   },
   {
-    id: 44,
-    title: "Minting NFTs and Building an NFT Marketplace like OpenSea",
+    id: 42,
+   title: "Minting NFTs and Building an NFT Marketplace like OpenSea",
     category: "Advanced Topics",
     description: "Creating and trading non-fungible tokens"
   },
   {
-    id: 45,
+    id: 43,
     title: "Optional Module Ask Angela Anything",
     category: "Advanced Topics",
     description: "Q&A session covering various web development topics"
   },
   {
-    id: 46,
+    id: 44,
     title: "Next Steps",
     category: "Advanced Topics",
     description: "Guidance for continuing your web development journey"
   }
 ];
 
+// Updated categories to match the actual courseData structure
 const categories = [
   {
     name: "Front-End Fundamentals",
-    modules: "1-13",
+    modules: "1-13", // 13 modules
     color: "#4299e1", // blue
-    percentage: 28
+    percentage: 30 // 13/44 ≈ 30%
   },
   {
-    name: "JavaScript & DOM",
-    modules: "14-20",
+    name: "JavaScript & DOM", 
+    modules: "14-20", // 7 modules
     color: "#f6ad55", // orange
-    percentage: 15
+    percentage: 16 // 7/44 ≈ 16%
   },
   {
     name: "Backend Development",
-    modules: "21-28",
+    modules: "21-30", // 10 modules (21-30, including API projects)
     color: "#68d391", // green
-    percentage: 17
+    percentage: 23 // 10/44 ≈ 23%
   },
   {
     name: "Databases & Full Stack",
-    modules: "29-37",
+    modules: "31-35", // 5 modules (Databases, SQL, PostgreSQL, Book Notes, Auth)
     color: "#fc8181", // red
-    percentage: 20
+    percentage: 11 // 5/44 ≈ 11%
   },
   {
     name: "Advanced Topics",
-    modules: "38-46",
+    modules: "36-44", // 9 modules (React, Web3, DeFi, etc.)
     color: "#b794f4", // purple
-    percentage: 20
+    percentage: 20 // 9/44 ≈ 20%
   }
 ];
 

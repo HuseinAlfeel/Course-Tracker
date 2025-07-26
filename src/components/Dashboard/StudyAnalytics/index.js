@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import StudyHoursChart from './StudyHoursChart';
 import StudySummary from './StudySummary';
 import SkillsRadarChart from './SkillsRadarChart';
@@ -8,18 +8,8 @@ const StudyAnalytics = ({ userProgress, allUsersProgress, currentUser }) => {
   const [weeklyStudyData, setWeeklyStudyData] = useState([]);
   const [totalHours, setTotalHours] = useState(0);
   
-  // Initial data load for current week
-  useEffect(() => {
-    if (!userProgress) return;
-    
-    // Get today-ending week data
-    const { dailyData, totalHours } = getStudyDataForWeek(0);
-    setWeeklyStudyData(dailyData);
-    setTotalHours(totalHours);
-  }, [userProgress]);
-  
   // Generate study data for a week ending on a specific date
-  const getStudyDataForWeek = (weekOffset, startDateOverride = null, endDateOverride = null) => {
+  const getStudyDataForWeek = useCallback((weekOffset, startDateOverride = null, endDateOverride = null) => {
     // Calculate dates for the selected week
     const today = new Date();
     
@@ -82,7 +72,17 @@ const StudyAnalytics = ({ userProgress, allUsersProgress, currentUser }) => {
     }
     
     return { dailyData: weekData, totalHours: weeklyTotal };
-  };
+  }, [userProgress]);
+  
+  // Initial data load for current week
+  useEffect(() => {
+    if (!userProgress) return;
+    
+    // Get today-ending week data
+    const { dailyData, totalHours } = getStudyDataForWeek(0);
+    setWeeklyStudyData(dailyData);
+    setTotalHours(totalHours);
+  }, [userProgress, getStudyDataForWeek]);
   
   // Handle week change from chart
   const handleWeekChange = (offset, startDate, endDate) => {

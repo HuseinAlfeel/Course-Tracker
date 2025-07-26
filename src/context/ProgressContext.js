@@ -7,10 +7,10 @@ import {
   getDoc, 
   updateDoc, 
   onSnapshot, 
-  query,
-  arrayUnion
+  query
 } from 'firebase/firestore';
 import { courseModules, categories } from '../constants/courseData';
+import { checkForNewBadges } from '../constants/badgeData';
 
 export const ProgressContext = createContext();
 
@@ -19,7 +19,9 @@ export const ProgressProvider = ({ children }) => {
   const [allUsersProgress, setAllUsersProgress] = useState([]);
   const [userProgress, setUserProgress] = useState([]);
   const [userAchievements, setUserAchievements] = useState([]);
+  const [earnedBadges, setEarnedBadges] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [recentModuleCompletion, setRecentModuleCompletion] = useState(false);
 
   // Get all users' progress for leaderboard
   useEffect(() => {
@@ -259,7 +261,8 @@ export const ProgressProvider = ({ children }) => {
           newProgress[moduleIndex] = {
             ...newProgress[moduleIndex],
             status,
-            updatedAt: today
+            updatedAt: today,
+            ...(status === 'completed' && { completedAt: today }) // Add completedAt when completed
           };
         } else {
           // Add new module to progress
@@ -267,7 +270,8 @@ export const ProgressProvider = ({ children }) => {
             moduleId,
             status,
             startedAt: today,
-            updatedAt: today
+            updatedAt: today,
+            ...(status === 'completed' && { completedAt: today }) // Add completedAt when completed
           });
         }
         
@@ -295,16 +299,54 @@ export const ProgressProvider = ({ children }) => {
           streak,
           lastUpdated: today
         });
+
+        // If module was completed, trigger recent completion state
+        if (status === 'completed') {
+          setRecentModuleCompletion(true);
+          // Reset after 10 seconds
+          setTimeout(() => {
+            setRecentModuleCompletion(false);
+          }, 10000);
+        }
+        
+        // Check for newly earned badges using the new badge system
+        const progressForBadges = {
+          overallProgress: calculateOverallCompletion(newProgress),
+          currentStreak: streak,
+          categories: {}
+        };
+        
+        // Calculate category progress for badge checking
+        categories.forEach(category => {
+          const stats = getCategoryStats(category.name, newProgress);
+          progressForBadges.categories[category.name] = stats;
+        });
+        
+        const completedModules = newProgress.filter(p => p.status === 'completed');
+        const newlyEarnedBadges = checkForNewBadges(completedModules, progressForBadges, earnedBadges);
+        
+        // Update earned badges state
+        if (newlyEarnedBadges.length > 0) {
+          setEarnedBadges(prev => [...prev, ...newlyEarnedBadges.map(badge => badge.id)]);
+        }
+        
+        console.log(`Found ${newlyEarnedBadges.length} newly earned badges:`, newlyEarnedBadges);
         
         // Check for achievements after progress is updated
         const newAchievements = await checkAndUnlockAchievements(newProgress, streak);
         
-        // Return any new achievements unlocked
-        return newAchievements;
+        // Return both old achievements and new badges for celebration triggers
+        return {
+          newAchievements,
+          newlyEarnedBadges
+        };
       }
     } catch (error) {
       console.error("Error updating module status:", error);
-      return [];
+      return {
+        newAchievements: [],
+        newlyEarnedBadges: []
+      };
     }
   };
   
@@ -335,7 +377,9 @@ export const ProgressProvider = ({ children }) => {
     allUsersProgress,
     userProgress,
     userAchievements,
+    earnedBadges,
     isLoading,
+    recentModuleCompletion,
     updateModuleStatus,
     checkAndUnlockAchievements,
     forceAchievementCheck  // Export for manual checking

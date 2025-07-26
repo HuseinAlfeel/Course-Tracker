@@ -1,14 +1,15 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { AuthContext } from '../Auth/AuthContext';
+import React, { useContext, useState } from 'react';
 import { ProgressContext } from '../../context/ProgressContext';
+import { useCelebration } from '../../context/CelebrationContext';
 import { courseModules, categories } from '../../constants/courseData';
 
 const ModuleList = () => {
-  const { currentUser } = useContext(AuthContext);
   const { userProgress, updateModuleStatus } = useContext(ProgressContext) || {
     userProgress: [],
     updateModuleStatus: () => console.log('updateModuleStatus not available')
   };
+
+  const { celebrateLessonCompletion, celebrateBadgeAchievement } = useCelebration();
 
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedStatus, setSelectedStatus] = useState('all');
@@ -35,9 +36,32 @@ const ModuleList = () => {
     return category ? category.color : '#6b7280';
   };
 
-  // Handle module status change
-  const handleStatusChange = (moduleId, newStatus) => {
-    updateModuleStatus(moduleId, newStatus);
+  // Handle module status change with celebrations
+  const handleStatusChange = async (moduleId, newStatus) => {
+    // If completing a module, trigger celebrations
+    if (newStatus === 'completed') {
+      // Trigger lesson completion celebration immediately
+      celebrateLessonCompletion();
+      
+      // Update module status and check for badge achievements
+      const result = await updateModuleStatus(moduleId, newStatus);
+      
+      // If new badges were earned, trigger badge celebrations
+      if (result && result.newlyEarnedBadges && result.newlyEarnedBadges.length > 0) {
+        // Trigger badge celebrations after a short delay (so lesson celebration finishes first)
+        setTimeout(() => {
+          result.newlyEarnedBadges.forEach((badge, index) => {
+            // Stagger multiple badge celebrations if more than one was earned
+            setTimeout(() => {
+              celebrateBadgeAchievement(badge);
+            }, index * 2000); // 2 second delay between multiple badges
+          });
+        }, 3000); // 3 second delay after lesson celebration
+      }
+    } else {
+      // Just update status for other changes (no celebration)
+      updateModuleStatus(moduleId, newStatus);
+    }
   };
 
   const filteredModules = getFilteredModules();

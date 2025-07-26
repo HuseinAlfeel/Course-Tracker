@@ -17,14 +17,22 @@ Live Demo
 Demo to be added later***
 ✨ Features
 
-Progress Tracking: Monitor your overall and category-specific progress
-Achievement System: Unlock badges as you reach learning milestones
-Study Streak Tracking: Build consistent learning habits
-Visual Analytics: See your learning patterns with interactive charts
-Module Management: Track individual modules with not started/in progress/completed status
-Leaderboard: Compare your progress with other learners
-User Authentication: Secure login/signup system
-Responsive Design: Works on desktop and mobile devices
+🎯 **Progress Tracking**: Monitor your overall and category-specific progress
+🏆 **Achievement System**: Unlock 18 unique badges as you reach learning milestones
+🎉 **Celebration System**: Interactive confetti and sound effects for completions
+🔥 **Study Streak Tracking**: Build consistent learning habits with streak counters
+📊 **Visual Analytics**: See your learning patterns with interactive charts
+📝 **Module Management**: Track individual modules with not started/in progress/completed status
+🏅 **Leaderboard**: Compare your progress with other learners
+🔐 **User Authentication**: Secure login/signup system with Firebase
+📱 **Responsive Design**: Works perfectly on desktop and mobile devices
+
+### 🎉 New: Celebration System
+- **Lesson Celebrations**: Confetti animations and victory sounds when completing modules
+- **Badge Achievements**: Special celebrations with modal notifications for unlocking badges
+- **18 Unique Badges**: From "First Steps" to "Coding Champion" - track major milestones
+- **Audio Feedback**: Optional sound effects that enhance the learning experience
+- **Non-Intrusive**: Celebrations enhance motivation without interrupting workflow
 
 🚀 Quick Start
 Prerequisites

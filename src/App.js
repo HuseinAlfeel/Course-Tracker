@@ -1,13 +1,16 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { HashRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { AuthProvider } from './components/Auth/AuthContext';
 import { ProgressProvider } from './context/ProgressContext';
+import { CelebrationProvider } from './context/CelebrationContext';
 import { AuthContext } from './components/Auth/AuthContext';
 import Dashboard from './components/Dashboard/Dashboard';
 import ModuleList from './components/CourseTracking/ModuleList';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
-import Profile from './components/Profile/Profile'; // Import the Profile component
+import Profile from './components/Profile/Profile';
+import AchievementModal from './components/Common/AchievementModal';
+import ErrorBoundary from './components/Common/ErrorBoundary'; // 🛡️ Added Error Boundary
 import './App.css';
 
 // Top Header Component
@@ -44,10 +47,6 @@ const BottomNavigation = ({ currentUser }) => {
     } catch (error) {
       console.error("Error logging out:", error);
     }
-  };
-  
-  const toggleUserMenu = () => {
-    setUserMenuOpen(!userMenuOpen);
   };
   
   const closeUserMenu = () => {
@@ -158,45 +157,53 @@ const ProtectedRoute = ({ children }) => {
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <ProgressProvider>
-          <div className="App" style={{
-            backgroundColor: '#1e1e1e',
-            minHeight: '100vh',
-            width: '100vw',
-            margin: 0,
-            padding: 0,
-            overflow: 'hidden'
-          }}>
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              
-              <Route path="/" element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              } />
-              
-              <Route path="/modules" element={
-                <ProtectedRoute>
-                  <ModuleList />
-                </ProtectedRoute>
-              } />
-              
-              <Route path="/profile" element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              } />
-              
-              <Route path="*" element={<Navigate to="/login" />} />
-            </Routes>
-          </div>
-        </ProgressProvider>
-      </AuthProvider>
-    </Router>
+    // 🛡️ ERROR BOUNDARY: Wraps the entire app to catch any JavaScript errors
+    <ErrorBoundary>
+      <Router>
+        <AuthProvider>
+          <ProgressProvider>
+            <CelebrationProvider>
+              <div className="App" style={{
+                backgroundColor: '#1e1e1e',
+                minHeight: '100vh',
+                width: '100vw',
+                margin: 0,
+                padding: 0,
+                overflow: 'hidden'
+              }}>
+                <Routes>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  
+                  <Route path="/" element={
+                    <ProtectedRoute>
+                      <Dashboard />
+                    </ProtectedRoute>
+                  } />
+                  
+                  <Route path="/modules" element={
+                    <ProtectedRoute>
+                      <ModuleList />
+                    </ProtectedRoute>
+                  } />
+                  
+                  <Route path="/profile" element={
+                    <ProtectedRoute>
+                      <Profile />
+                    </ProtectedRoute>
+                  } />
+                  
+                  <Route path="*" element={<Navigate to="/login" />} />
+                </Routes>
+                
+                {/* Achievement Modal - Available globally */}
+                <AchievementModal />
+              </div>
+            </CelebrationProvider>
+          </ProgressProvider>
+        </AuthProvider>
+      </Router>
+    </ErrorBoundary>
   );
 }
 
