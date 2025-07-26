@@ -1,15 +1,24 @@
 {
   "files": {
-    "main.css": "/Course-Tracker/static/css/main.c9b48998.chunk.css",
-    "main.js": "/Course-Tracker/static/js/main.af623ec5.chunk.js",
-    "main.js.map": "/Course-Tracker/static/js/main.af623ec5.chunk.js.map",
-    "runtime~main.js": "/Course-Tracker/static/js/runtime~main.14e160f6.js",
-    "runtime~main.js.map": "/Course-Tracker/static/js/runtime~main.14e160f6.js.map",
-    "static/js/2.9a8ffa55.chunk.js": "/Course-Tracker/static/js/2.9a8ffa55.chunk.js",
-    "static/js/2.9a8ffa55.chunk.js.map": "/Course-Tracker/static/js/2.9a8ffa55.chunk.js.map",
+    "main.css": "/Course-Tracker/static/css/main.345c0018.css",
+    "main.js": "/Course-Tracker/static/js/main.b3258065.js",
+    "static/js/531.ed5afb71.chunk.js": "/Course-Tracker/static/js/531.ed5afb71.chunk.js",
+    "static/js/337.eeabef8d.chunk.js": "/Course-Tracker/static/js/337.eeabef8d.chunk.js",
+    "static/js/12.019e367f.chunk.js": "/Course-Tracker/static/js/12.019e367f.chunk.js",
+    "static/js/99.c013d8bd.chunk.js": "/Course-Tracker/static/js/99.c013d8bd.chunk.js",
+    "static/js/443.c0c5f69f.chunk.js": "/Course-Tracker/static/js/443.c0c5f69f.chunk.js",
+    "static/js/92.7c9c1fbc.chunk.js": "/Course-Tracker/static/js/92.7c9c1fbc.chunk.js",
+    "static/js/215.912ab28f.chunk.js": "/Course-Tracker/static/js/215.912ab28f.chunk.js",
+    "static/js/479.6ecd5df4.chunk.js": "/Course-Tracker/static/js/479.6ecd5df4.chunk.js",
+    "static/js/952.cc8cfc0a.chunk.js": "/Course-Tracker/static/js/952.cc8cfc0a.chunk.js",
+    "static/media/sad-circle.lottie": "/Course-Tracker/static/media/sad-circle.5517776d38e5816fbcde.lottie",
+    "static/media/monkey-dancing.lottie": "/Course-Tracker/static/media/monkey-dancing.220ff3620d96e053d571.lottie",
     "index.html": "/Course-Tracker/index.html",
-    "precache-manifest.12fc86b104b97afebaf070272dd1b3af.js": "/Course-Tracker/precache-manifest.12fc86b104b97afebaf070272dd1b3af.js",
-    "service-worker.js": "/Course-Tracker/service-worker.js",
-    "static/css/main.c9b48998.chunk.css.map": "/Course-Tracker/static/css/main.c9b48998.chunk.css.map"
-  }
+    "main.345c0018.css.map": "/Course-Tracker/static/css/main.345c0018.css.map",
+    "main.b3258065.js.map": "/Course-Tracker/static/js/main.b3258065.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.345c0018.css",
+    "static/js/main.b3258065.js"
+  ]
 }
